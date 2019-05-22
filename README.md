@@ -1,2 +1,2 @@
-# PosyanduSmart-admin
-Aplikasi admin untuk Posyandu Smart
+# MEventadmin
+Aplikasi admin untuk MEvent
