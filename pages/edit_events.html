@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <desc>Admin - Permata Hati 1</desc>
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Admin</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li class="divider"></li>
+                        <li>
+                            <a id="logout" href="index.html" onclick="logout()">
+                                <i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="index.html">
+                                <i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-edit fa-fw"></i>Tambah Data
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="tambah_perkembangan.html">Perkembangan</a>
+                                </li>
+                                <li>
+                                    <a href="tambah_artikel.html">Artikel</a>
+                                </li>
+                                <li>
+                                    <a href="tambah_events.html">events</a>
+                                </li>
+                                <li>
+                                    <a href="tambah_konsultan.html">Konsultan</a>
+                                </li>
+                                <li>
+                                    <a href="tambah_kontrol.html">Jadwal Kontrol</a>
+                                </li>
+                                <li>
+                                    <a href="tambah_siaga.html">Jadwal Siaga</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-list-alt fa-fw"></i> Lihat Data
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="table_user.html">Users</a>
+                                </li>
+                                <li>
+                                    <a href="lihat_artikel.html">Artikel</a>
+                                </li>
+                                <li>
+                                    <a href="lihat_konsultan.html">Konsultan</a>
+                                </li>
+                                <li>
+                                    <a href="lihat_events.html">events</a>
+                                </li>
+                                <li>
+                                    <a href="lihat_kontrol.html">Jadwal Kontrol</a>
+                                </li>
+                                <li>
+                                    <a href="lihat_siaga.html">Jadwal Siaga</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Forms</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Basic Form Elements
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+
+
+                                    <form id="update_entry">
+                                        <div class="form-group">
+                                            <label for="modulo-a-convalidar">Gambar</label>
+                                            <br>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <input type="file" onchange="previewFile()">
+                                                    </td>
+                                                    <td>
+                                                        <img src="" id="preview" on width="50%" alt="Image preview...">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="form-group">
+                                            <progress class="center" value="0" max="100" id="uploader">0%</progress>
+                                        </div>
+                                        <div class="form-group" hidden="true">
+                                            <input type="text" name="url" id="url" class="form-control col-md-12" value="" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ciclo-a-convalidar">Judul</label>
+                                            <br>
+                                            <input type="text" name="desc" class="form-control col-md-12" required>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div class="text-right">
+                                            <button class="btn btn-large btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+    <script src="//cdn.ckeditor.com/4.5.10/standard/ckeditor.js"></script>
+
+    <script>
+        // firebase config
+        var config = {
+              apiKey: "AIzaSyDLzK7VLT4ITNoj0enseJbZbm9zSfzz7TY",
+              authDomain: "mevent-pbo.firebaseapp.com",
+              databaseURL: "https://mevent-pbo.firebaseio.com",
+              projectId: "mevent-pbo",
+              storageBucket: "mevent-pbo.appspot.com",
+              messagingSenderId: "739269432876",
+              appId: "1:739269432876:web:f9800ffbcf4f1efd"
+        };
+        firebase.initializeApp(config);
+
+        ////////////////
+
+        var uploader = document.getElementById('uploader');
+        var storageRef = firebase.storage().ref();
+        var imagesRef = storageRef.child('events');
+
+        function previewFile() {
+            var file = document.querySelector('input[type=file]').files[0];
+            var metadata = {
+                contentType: 'image/jpeg'
+            };
+
+            var uploadTask = storageRef.child('events/' + file.name).put(file, metadata);
+
+            uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+                function progress(snapshot) {
+                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    uploader.value = percentage;
+                },
+
+                function (error) {
+                    console.log('error while uploading')
+                },
+
+                function () {
+                    var starsRef = storageRef.child('events/' + file.name);
+                    starsRef.getDownloadURL().then(function (url) {
+                        document.querySelector('#preview').src = url;
+                        document.querySelector('#url').value = url;
+                    }).catch(function (error) {
+                        console.log('error while downloading file');
+                    });
+                });
+        }
+
+
+        /**********************\
+         * check login status *
+        \**********************/
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+
+                /*********************************\
+                 * Fetch the entry from Firebase *
+                \*********************************/
+                var entry_id = $_GET('id');
+
+                if (entry_id) {
+
+                    var Entry = firebase.database().ref('events').child(entry_id);
+
+                    Entry.once('value', function (r) { // once = just this once, no need to actively watch the changes
+                        var entry = r.val();
+
+                        $('#update_entry [name="desc"]').val(entry.desc);
+                        $('#update_entry [name="url"]').val(entry.url);
+
+
+
+                        CKEDITOR.replace('content');
+
+                        document.getElementById("img").src = entry.url;
+                    });
+
+
+                    /**********************\
+                     * Save the form data *
+                    \**********************/
+                    $('#update_entry').submit(function (e) {
+                        e.preventDefault();
+
+                        Entry.transaction(function (entry) {
+
+                            entry = entry || {};
+                            entry.desc = $('#update_entry [name="desc"]').val();
+                            entry.url = $('#update_entry [name="url"]').val();
+
+
+                            return entry;
+
+                        }).then(function () {
+                            window.location.href = 'detail_events.html?id=' + entry_id;
+                        }).catch(function (error) {
+                            alert(error);
+                        });
+
+                        return false;
+                    });
+
+                } else {
+                    window.location.href = 'tambah_events.html';
+                }
+
+
+            } else {
+                // if not logged in
+                alert('Please log-in')
+                window.location.href = 'login.html';
+
+            }
+        });
+
+
+        /*************\
+         * Utilities *
+        \*************/
+
+        function $_GET(key) {
+            var queries = window.location.href.split('?').pop().split('&');
+            var params = {};
+            queries.map(function (query) {
+                var set = query.split('=');
+                params[set[0]] = set[1];
+            });
+
+            if (key) {
+                return params[key] || null;
+            } else {
+                return params;
+            }
+
+        }
+    </script>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>

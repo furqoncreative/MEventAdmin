@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin - Permata Hati 1</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Admin</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li class="divider"></li>
+                        <li>
+                            <a id="logout" href="index.html" onclick="logout()">
+                                <i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="index.html">
+                                <i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-edit fa-fw"></i>Tambah Data
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="tambah_events.html">events</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-list-alt fa-fw"></i> Lihat Data
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="lihat_events.html">events</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Detail</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 data-bind="desc">Loading...</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+
+
+                                    <article>
+
+                                        <img class="center" id="url" width="80%" />
+                                        <hr>
+                                        <div class="text-center">
+                                            <a href="" id="update" class="btn btn-lg btn-primary">Edit</a>
+                                            &nbsp; &nbsp; &nbsp; &nbsp;
+                                            <button id="delete" class="btn btn-lg btn-danger">Hapus</button>
+                                        </div>
+                                        <hr>
+
+
+                                    </article>
+
+
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+    <script src="//cdn.ckeditor.com/4.5.10/standard/ckeditor.js"></script>
+
+    <script>
+        // firebase config
+        var config = {
+              apiKey: "AIzaSyDLzK7VLT4ITNoj0enseJbZbm9zSfzz7TY",
+              authDomain: "mevent-pbo.firebaseapp.com",
+              databaseURL: "https://mevent-pbo.firebaseio.com",
+              projectId: "mevent-pbo",
+              storageBucket: "mevent-pbo.appspot.com",
+              messagingSenderId: "739269432876",
+              appId: "1:739269432876:web:f9800ffbcf4f1efd"
+        };
+        firebase.initializeApp(config);
+
+        /////////////////////////////////////
+
+        /*********************************\
+         * Fetch and display the entry *
+        \*********************************/
+
+        var entry_id = $_GET('id');
+
+
+        if (entry_id) {
+            var added_views = false;
+            var Entry = firebase.database().ref('events').child(entry_id);
+
+            Entry.on('value', function (r) {
+                var entry = r.val();
+
+                if (entry) {
+
+                    // entry['updatedAt-formatted'] = datetimeFormat(entry.updatedAt);
+
+                    $('[data-bind]').each(function () {
+                        $(this).html(entry[$(this).data('bind')]);
+                    });
+
+
+                    document.getElementById("url").src = entry.url;
+
+                } else { // content not found
+                    window.location.href = 'lihat_events.html';
+                }
+            });
+
+            // update button
+            $('#update').attr('href', 'edit_events.html?id=' + entry_id);
+            // $('#url').attr('src', "'"+ url +"'" );
+
+            // $('#text').attr('value', "'"+ url +"'" );
+            // delete button
+            $('#delete').click(function () {
+                if (confirm('This entry will be permanently delete. Are you sure?')) {
+                    Entry.remove(); // this will trigger Entry.on('value') immediatly
+                }
+            });
+        } else {
+            alert('This entry id does not exist');
+            window.location.href = 'lihat_events.html';
+        }
+
+        /*************\
+         * Utilities *
+        \*************/
+
+        function $_GET(key) {
+            var queries = window.location.href.split('?').pop().split('&');
+            var params = {};
+            queries.map(function (query) {
+                var set = query.split('=');
+                params[set[0]] = set[1];
+            });
+
+            if (key) {
+                return params[key] || null;
+            } else {
+                return params;
+            }
+
+        }
+
+        function excerpt(text, length) {
+            text = strip(text);
+            text = $.trim(text); //trim whitespace
+            if (text.length > length) {
+                text = text.substring(0, length - 3) + '...';
+            }
+            return text;
+        }
+
+        function pad2Digit(num) {
+            return ('0' + num.toString()).slice(-2);
+        }
+
+        function datetimeFormat(timestamp) {
+            var dateObj = new Date(timestamp);
+            var en_month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            return dateObj.getDate() + ' ' + en_month[dateObj.getMonth()] + ' ' + pad2Digit(dateObj.getFullYear()) +
+                ' ' + pad2Digit(dateObj.getHours()) + ':' + pad2Digit(dateObj.getMinutes());
+        }
+    </script>
+    <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+
+                document.getElementById('logout').onclick = function () {
+                    if (confirm('Apa anda yankin ingin keluar ?')) {
+                        firebase.auth().signOut(); // This will trigger onAuthStateChanged again, immediately.
+                    }
+                };
+            } else {
+                // if not logged in yet
+                window.location.href = 'login.html';
+
+            }
+        });
+    </script>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>

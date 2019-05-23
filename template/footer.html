@@ -1,0 +1,47 @@
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <script>
+        // firebase config
+        var config = {
+                apiKey: "AIzaSyADNo4ya0ZRFRcYyda1SKDNGpf9v8XreWY",
+                authDomain: "posyandusmart.firebaseapp.com",
+                databaseURL: "https://posyandusmart.firebaseio.com",
+                projectId: "posyandusmart",
+                storageBucket: "posyandusmart.appspot.com",
+                messagingSenderId: "818427370326"
+        };
+        firebase.initializeApp(config);
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+
+                document.getElementById('logout').onclick = function () {
+                    if (confirm('Apa anda yankin ingin keluar ?')) {
+                        firebase.auth().signOut(); // This will trigger onAuthStateChanged again, immediately.
+                    }
+                };
+
+            } else {
+                // if not logged in yet
+                window.location.href = 'login.html';
+
+            }
+        });
+
+    </script>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../vendor/raphael/raphael.min.js"></script>
+    <script src="../vendor/morrisjs/morris.min.js"></script>
+    <script src="../data/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
